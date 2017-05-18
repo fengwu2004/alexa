@@ -12,4 +12,9 @@ router.post('/findwordmean', function(req, res, next) {
     res.send("ok, let us move!")
 });
 
+router.get('/wx', function(req, res, next) {
+
+    res.send('hello wechat')
+})
+
 module.exports = router;
