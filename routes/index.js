@@ -14,7 +14,17 @@ router.post('/findwordmean', function(req, res, next) {
 
 router.get('/wx', function(req, res, next) {
 
-    res.send('hello wechat')
+    var signature = req.query.signature
+
+    var timestamp = req.query.timestamp
+
+    var nonce = req.query.nonce
+
+    var echostr = req.query.echostr
+
+    var token = 'yellfun123'
+
+    res.send(echostr)
 })
 
 module.exports = router;
