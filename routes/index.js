@@ -27,4 +27,9 @@ router.get('/wx', function(req, res, next) {
     res.send(echostr)
 })
 
+router.post('/wx', function(req, res, next) {
+
+    console.log(req.body)
+}
+
 module.exports = router;
