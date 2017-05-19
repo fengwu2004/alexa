@@ -56,7 +56,7 @@ router.post('/wx', function(req, res, next) {
 
     var data = composeTextMsg(from, to, time, msgid, '你好')
 
-    res.writeHead(200, {'Content-Type': 'application/xml'});
+    res.setHeader('Content-Type', 'application/xml')
 
     red.send(data)
 })
