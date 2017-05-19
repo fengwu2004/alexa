@@ -46,11 +46,11 @@ function composeTextMsg(to, from, time, content) {
 
 router.post('/wx', function(req, res, next) {
 
-    var to = req.body.ToUserName
+    var to = req.body.xml.tousername[0]
 
-    var from = req.body.FromUserName
+    var from = req.body.xml.fromusername[0]
 
-    var time = req.body.CreateTime
+    var time = req.body.xml.createtime[0]
 
     var data = composeTextMsg(from, to, time, '你好')
 
