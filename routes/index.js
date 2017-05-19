@@ -27,9 +27,34 @@ router.get('/wx', function(req, res, next) {
     res.send(echostr)
 })
 
+function composeTextMsg(to, from, time, content) {
+
+    var ToUserName = '<ToUserName>' + to + '</ToUserName>'
+
+    var FromUserName = '<FromUserName>' + from + '</FromUserName>'
+
+    var CreateTime = '<CreateTime>' + time + '</CreateTime>'
+
+    var Content = '<Content>' + content + '</Content>'
+
+    var MsgType = '<MsgType>' + 'text' + '</MsgType>'
+
+    var data = ToUserName + FromUserName + CreateTime + MsgType + Content
+
+    return data
+}
+
 router.post('/wx', function(req, res, next) {
 
-    red.send('what can i help you')
+    var to = req.body.ToUserName
+
+    var from = req.body.FromUserName
+
+    var time = req.body.CreateTime
+
+    var data = composeTextMsg(from, to, time, '你好')
+
+    red.send(data)
 })
 
 module.exports = router;
