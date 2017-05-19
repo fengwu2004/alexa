@@ -58,7 +58,7 @@ router.post('/wx', function(req, res, next) {
 
     res.setHeader('Content-Type', 'application/xml')
 
-    red.send(data)
+    res.end(data);
 })
 
 module.exports = router;
