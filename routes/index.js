@@ -29,15 +29,15 @@ router.get('/wx', function(req, res, next) {
 
 function composeTextMsg(to, from, time, msgid, content) {
 
-    var ToUserName = '<ToUserName>' + to + '</ToUserName>'
+    var ToUserName = '<ToUserName><![CDATA[' + to + ']]></ToUserName>'
 
-    var FromUserName = '<FromUserName>' + from + '</FromUserName>'
+    var FromUserName = '<FromUserName><![CDATA[' + from + ']]></FromUserName>'
 
     var CreateTime = '<CreateTime>' + time + '</CreateTime>'
 
-    var Content = '<Content>' + content + '</Content>'
+    var Content = '<Content><![CDATA[' + content + ']]></Content>'
 
-    var MsgType = '<MsgType>' + 'text' + '</MsgType>'
+    var MsgType = '<MsgType><![CDATA[text]]></MsgType>'
 
     var data = '<xml>' + ToUserName + FromUserName + CreateTime + MsgType + Content + '</xml>'
 
@@ -55,6 +55,8 @@ router.post('/wx', function(req, res, next) {
     var msgid = req.body.xml.msgid[0]
 
     var data = composeTextMsg(from, to, time, msgid, '你好')
+
+    res.writeHead(200, {'Content-Type': 'application/xml'});
 
     red.send(data)
 })
