@@ -39,7 +39,7 @@ function composeTextMsg(to, from, time, content) {
 
     var MsgType = '<MsgType>' + 'text' + '</MsgType>'
 
-    var data = ToUserName + FromUserName + CreateTime + MsgType + Content
+    var data = '<xml>' + ToUserName + FromUserName + CreateTime + MsgType + Content + '</xml>'
 
     return data
 }
