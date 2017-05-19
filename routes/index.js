@@ -27,11 +27,11 @@ router.get('/wx', function(req, res, next) {
     res.send(echostr)
 })
 
-function composeTextMsg(to, from, time, content) {
+function composeTextMsg(to, from, time, msgid, content) {
 
-    var ToUserName = '<ToUserName>' + from + '</ToUserName>'
+    var ToUserName = '<ToUserName>' + to + '</ToUserName>'
 
-    var FromUserName = '<FromUserName>' + to + '</FromUserName>'
+    var FromUserName = '<FromUserName>' + from + '</FromUserName>'
 
     var CreateTime = '<CreateTime>' + time + '</CreateTime>'
 
@@ -52,7 +52,9 @@ router.post('/wx', function(req, res, next) {
 
     var time = req.body.xml.createtime[0]
 
-    var data = composeTextMsg(from, to, time, '你好')
+    var msgid = req.body.xml.msgid[0]
+
+    var data = composeTextMsg(from, to, time, msgid, '你好')
 
     red.send(data)
 })
