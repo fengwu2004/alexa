@@ -29,9 +29,9 @@ router.get('/wx', function(req, res, next) {
 
 function composeTextMsg(to, from, time, content) {
 
-    var ToUserName = '<ToUserName>' + to + '</ToUserName>'
+    var ToUserName = '<ToUserName>' + from + '</ToUserName>'
 
-    var FromUserName = '<FromUserName>' + from + '</FromUserName>'
+    var FromUserName = '<FromUserName>' + to + '</FromUserName>'
 
     var CreateTime = '<CreateTime>' + time + '</CreateTime>'
 
